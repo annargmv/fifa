@@ -4,12 +4,14 @@ class Backend:
         self._players_dict = {}
 
     def read_from_file(self):
-        with open('data1.csv') as f:
+        with open('backend/static/data1.csv') as f:
             lines = f.readlines()[1:]
+            self.create_dict_with_keys()
             for line in lines:
                 line_list = line.strip().split(",")
-                self.create_dict_with_keys()
                 self.create_dict_of_players(line_list)
+
+        return self._players_dict
 
     def create_dict_of_players(self, players_data):
         for i in range(15, 30):
@@ -19,7 +21,7 @@ class Backend:
             if start_range <= int(players_data[3]) <= end_range:
                 self._players_dict["{}-{}".format(start_range, end_range)].append(
                     {"name": players_data[2], "photo_link": players_data[4]})
-        print(self._players_dict)
+        return self._players_dict
 
 
     def create_dict_with_keys(self):

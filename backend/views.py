@@ -9,9 +9,9 @@ def play_game():
 
     # Wanted to show the players json in the view
 
-    # players = Backend()
-    # players_json = players.read_from_file()
-    #
-    # return jsonify({"players": players_json})
+    players = Backend()
+    players_json = players.read_from_file()
 
-    return 'Done', 201
+    return jsonify({"players": players_json})
+
+    # return 'Done', 201
